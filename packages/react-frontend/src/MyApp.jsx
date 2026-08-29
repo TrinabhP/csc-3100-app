@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import Table from "./Table";
 import Form from "./Form";
-
-const [characters, setCharacters] = useState([]);
   
 function MyApp() {
     const [characters, setCharacters] = useState([]);
