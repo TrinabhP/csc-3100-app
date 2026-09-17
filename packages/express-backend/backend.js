@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 
+
 const app = express();
 const port = 8000;
 
@@ -49,6 +50,7 @@ const findUserByNameAndJob = (name, job) => {
 }
 
 const addUser = (user) => {
+  user.id = Math.random().toString()
   users["users_list"].push(user);
   return user;
 };
@@ -92,7 +94,7 @@ app.get("/", (req, res) => {
 app.post("/users", (req, res) => {
   const userToAdd = req.body;
   addUser(userToAdd);
-  res.send();
+  res.status(201).send(userToAdd);
 });
 
 app.delete("/users/:id", (req, res) => {
@@ -103,7 +105,7 @@ app.delete("/users/:id", (req, res) => {
     res.status(404).send("Resource not found.");
   } else {
     deleteUser(userToDelete);
-    res.send();
+    res.status(204).send();
   }
 });
 
