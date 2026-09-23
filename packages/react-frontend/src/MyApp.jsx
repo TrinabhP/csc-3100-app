@@ -9,7 +9,7 @@ function MyApp() {
     function removeOneCharacter(index) {
       const userToDelete = characters[index]
 
-      const promise = fetch(`http://localhost:8000/users/${userToDelete.id}`, {method : "DELETE"})
+      const promise = fetch(`http://localhost:8000/users/${userToDelete._id}`, {method : "DELETE"})
       .then((res) => {
         if (res.status === 204) {
           const updated = characters.filter((character, i) => {
